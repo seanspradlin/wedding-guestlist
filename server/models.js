@@ -5,13 +5,31 @@ const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
 const householdSchema = mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  address1: String,
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  address1: {
+    type: String,
+    required: true,
+  },
   address2: String,
-  city: String,
-  state: String,
-  zip: String,
+  city: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  zip: {
+    type: String,
+    required: true,
+  },
   preferredContact: String,
   email: String,
   phone: [{
@@ -26,5 +44,5 @@ const householdSchema = mongoose.Schema({
   }],
 });
 
-module.exports = mongoose.model('Household', householdSchema);
+module.exports.Household = mongoose.model('Household', householdSchema);
 
