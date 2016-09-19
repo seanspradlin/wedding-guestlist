@@ -26,7 +26,7 @@ const householdSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  zip: {
+  postal: {
     type: String,
     required: true,
   },
@@ -35,7 +35,6 @@ const householdSchema = mongoose.Schema({
   phone: [{
     type: String,
     number: String,
-    canText: Boolean,
   }],
   members: [{
     firstName: String,
