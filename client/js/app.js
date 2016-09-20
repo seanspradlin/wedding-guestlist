@@ -10,8 +10,15 @@ function SectionManager() {
   ];
 
   this._currentSection = 0;
+  this._progress = $('footer');
   this.hideOtherSections();
 }
+
+SectionManager.prototype.updateProgressBar =
+  function updateProgressBar() {
+    const progress = `${(this._currentSection / this._sections.length) * 100}%`;
+    $('footer').animate({ width: progress }, 400);
+  };
 
 SectionManager.prototype.current =
   function current() {
@@ -28,6 +35,7 @@ SectionManager.prototype.prev =
     if (this._currentSection > 0) {
       this.current().fadeOut(400, () => {
         this._currentSection--;
+        this.updateProgressBar();
         this.current().fadeIn(400, fn);
       });
     }
@@ -35,9 +43,10 @@ SectionManager.prototype.prev =
 
 SectionManager.prototype.next =
   function next(fn) {
-    if (this._currentSection < this._sections.length) {
+    if (this._currentSection < (this._sections.length - 1)) {
       this.current().fadeOut(400, () => {
         this._currentSection++;
+        this.updateProgressBar();
         this.current().fadeIn(400, fn);
       });
     }
@@ -45,5 +54,11 @@ SectionManager.prototype.next =
 
 $(document).ready(() => {
   const manager = new SectionManager();
+  $('#btnBack').click(() => {
+    manager.prev();
+  });
+  $('#btnNext').click(() => {
+    manager.next();
+  });
 });
 
