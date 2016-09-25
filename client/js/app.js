@@ -72,6 +72,7 @@ FormManager.prototype.next = function next(fn) {
     this.currentSection.fadeOut(400, () => {
       this.currentSection = this.currentSection.next();
       this.currentSection.fadeIn(400, fn || (() => { }));
+      this.loadSummary();
     });
   }
 };
