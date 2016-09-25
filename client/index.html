@@ -14,6 +14,19 @@
   </style>
   <script src="js/jquery.min.js"></script>
   <script src="js/app.js"></script>
+  <script id="member-template" type="text/x-custom-template">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-9">
+          <input class="form-control" type="text" name="name" placeholder="Jane Doe">
+        </div>
+        <label class="col-md-3">
+          <input type="checkbox">
+          Under 13?
+        </label>
+      </div>
+    </div>
+  </script>
 </head>
 
 <body>
@@ -106,7 +119,7 @@
 
         <div class="row">
           <div class="col-xs-6 col-xs-offset-6">
-            <input class="btn btn-primary btn-lg btn-block next" type="button" value="Next">
+            <button class="btn btn-primary btn-lg btn-block next" type="button">Next</button>
           </div>
         </div>
       </section>
@@ -121,72 +134,23 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <input class="form-control" id="member1" type="text" name="name" placeholder="Jane Doe">
-              <label>
-                <input id="member1isChild" type="checkbox">
-                Under 13?
-              </label>
-            </div>
-          </div>
-        </div>
+        <div id="member-container"></div>
 
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <input class="form-control" id="member2" type="text" name="name" placeholder="Jimmy Doe">
-              <label>
-                <input id="member1isChild" type="checkbox">
-                Under 13?
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <input class="form-control" id="member3" type="text" name="name" placeholder="Jennifer Doe">
-              <label>
-                <input id="member1isChild" type="checkbox">
-                Under 13?
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <input class="form-control" id="member4" type="text" name="name" placeholder="Janice Doe">
-              <label>
-                <input id="member1isChild" type="checkbox">
-                Under 13?
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <input class="form-control" id="member5" type="text" name="name" placeholder="Jordan Doe">
-              <label>
-                <input id="member1isChild" type="checkbox">
-                Under 13?
-              </label>
-            </div>
+          <div class="col-xs-12">
+            <button type="button" class="btn btn-primary btn-lg" id="add-member">
+              <span class="glyphicon glyphicon-plus"></span>
+              Add another...
+              </button>
           </div>
         </div>
 
         <div class="row">
           <div class="col-xs-6">
-            <input class="btn btn-lg btn-block prev" type="button" value="Back">
+            <button class="btn btn-block prev" type="button">Back</button>
           </div>
           <div class="col-xs-6">
-            <input class="btn btn-primary btn-lg btn-block next" type="button" value="Next">
+            <button class="btn btn-primary btn-block next" type="button">Next</button>
           </div>
         </div>
       </section>
@@ -222,10 +186,10 @@
 
         <div class="row">
           <div class="col-xs-6">
-            <input class="btn btn-lg btn-block prev" type="button" value="Back">
+            <button class="btn btn-lg btn-block prev" type="button">Back</button>
           </div>
           <div class="col-xs-6">
-            <input class="btn btn-success btn-lg btn-block next" type="button" value="Submit">
+            <button class="btn btn-success btn-lg btn-block next" type="button">Submit</button>
           </div>
         </div>
       </section>

@@ -5,7 +5,16 @@
 function FormManager() {
   this.currentSection = $('#householdForm section:first');
   this.currentSection.show();
+  this.memberTemplate = $('#member-template').html();
+  this.memberContainer = $('#member-container');
+  this.addMember();
+  this.addMember();
+  this.addMember();
 }
+
+FormManager.prototype.addMember = function addMember() {
+  this.memberContainer.append(this.memberTemplate);
+};
 
 FormManager.prototype.values = function values() {
   var values = {
@@ -24,7 +33,7 @@ FormManager.prototype.values = function values() {
     ]
   };
   return values;
-}
+};
 
 FormManager.prototype.next = function next(fn) {
   if (!!this.currentSection.next()[0]) {
@@ -33,7 +42,7 @@ FormManager.prototype.next = function next(fn) {
       this.currentSection.fadeIn(400, fn || (() => { }));
     });
   }
-}
+};
 
 FormManager.prototype.prev = function prev(fn) {
   if (!!this.currentSection.prev()[0]) {
@@ -42,7 +51,7 @@ FormManager.prototype.prev = function prev(fn) {
       this.currentSection.fadeIn(400, fn || (() => { }));
     })
   }
-}
+};
 
 var form;
 $(document).ready(function () {
@@ -60,6 +69,10 @@ $(document).ready(function () {
 
   $('.prev').click(function() {
     form.prev();
+  });
+
+  $('#add-member').click(function() {
+    form.addMember();
   });
 });
 
