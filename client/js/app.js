@@ -13,7 +13,23 @@ function FormManager() {
 }
 
 FormManager.prototype.addMember = function addMember() {
-  this.memberContainer.append(this.memberTemplate);
+  if (this.memberContainer.children().length < 21) {
+    this.memberContainer.append(this.memberTemplate);
+  }
+};
+
+FormManager.prototype.parseMembers = function parseMembers() {
+  var members = [];
+  this.memberContainer.children().each(function(row) {
+    var member = {
+      name: $(this).find(':text').val(),
+      isChild: $(this).find(':checkbox').prop('checked')
+    };
+    if (member.name !== '') {
+      members.push(member);
+    }
+  });
+  return members;
 };
 
 FormManager.prototype.values = function values() {
@@ -73,6 +89,9 @@ $(document).ready(function () {
 
   $('#add-member').click(function() {
     form.addMember();
+    if (form.memberContainer.children().length >= 20) {
+      $(this).hide();
+    }
   });
 });
 
