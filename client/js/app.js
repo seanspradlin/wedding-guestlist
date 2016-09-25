@@ -46,10 +46,26 @@ FormManager.prototype.values = function values() {
         type: $('#secondaryPhoneType').val() || null,
         number: $('#secondaryPhone').val() || null
       }
-    ]
+    ],
+    household: this.parseMembers()
   };
   return values;
 };
+
+FormManager.prototype.loadSummary = function loadSummary() {
+  var values = this.values();
+  $('#sumName').html(values.name);
+  $('#sumAddress').html(values.address);
+  $('#sumEmail').html(values.email);
+  $('#sumPrimaryPhone').html(values.phone[0].number);
+  $('#sumSecondaryPhone').html(values.phone[1].number);
+  var householdHtml = '';
+  values.household.forEach(function(member) {
+    householdHtml += '<li>' + member.name + '</li>';
+  });
+  $('#sumHousehold').html(householdHtml);
+
+}
 
 FormManager.prototype.next = function next(fn) {
   if (!!this.currentSection.next()[0]) {
