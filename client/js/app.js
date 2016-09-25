@@ -7,6 +7,25 @@ function FormManager() {
   this.currentSection.show();
 }
 
+FormManager.prototype.values = function values() {
+  var values = {
+    name: $('#name').val() || null,
+    address: $('#address').val() || null,
+    email: $('#email').val() || null,
+    phone: [
+      {
+        type: $('#primaryPhoneType').val() || null,
+        number: $('#primaryPhone').val() || null
+      },
+      {
+        type: $('#secondaryPhoneType').val() || null,
+        number: $('#secondaryPhone').val() || null
+      }
+    ]
+  };
+  return values;
+}
+
 FormManager.prototype.next = function next(fn) {
   if (!!this.currentSection.next()[0]) {
     this.currentSection.fadeOut(400, () => {
@@ -25,7 +44,7 @@ FormManager.prototype.prev = function prev(fn) {
   }
 }
 
-let form;
+var form;
 $(document).ready(function () {
   form = new FormManager();
   // capture enter key
