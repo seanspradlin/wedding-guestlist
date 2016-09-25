@@ -33,6 +33,14 @@ $(document).ready(function () {
     if (e.which === 13) {
       form.next();
     }
-  })
+  });
+
+  $('.next').click(function() {
+    form.next();
+  });
+
+  $('.prev').click(function() {
+    form.prev();
+  });
 });
 

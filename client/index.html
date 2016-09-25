@@ -7,15 +7,21 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-size: 15px;
+    }
+  </style>
   <script src="js/jquery.min.js"></script>
   <script src="js/app.js"></script>
 </head>
 
 <body>
   <div class="container">
+    <div class="col-md-10 col-md-offset-1 col-sm-12">
 
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
         <h1>
           Sean &amp; Kate's<br>
           <small>Wedding Address Book</small>
@@ -33,12 +39,13 @@
     <form id="householdForm" class="form-horizontal">
       <section id="contactInfo">
         <div class="row">
-          <h2 class="col-md-9 col-md-offset-3">Contact Info</h2>
+          <h2 class="col-md-12">Contact Info</h2>
         </div>
+
         <div class="row">
           <div class="form-group">
             <label for="name" class="col-md-3 control-label">Name</label>
-            <div class="col-md-6">
+            <div class="col-md-9">
               <input class="form-control" id="name" type="text" name="name" placeholder="John Doe" required>
             </div>
           </div>
@@ -47,7 +54,7 @@
         <div class="row">
           <div class="form-group">
             <label for="address" class="col-md-3 control-label">Address</label>
-            <div class="col-md-6">
+            <div class="col-md-9">
               <input id="address" class="form-control" type="text" name="address" placeholder="123 Example Street, Nashville, TN 37013"
                 required>
             </div>
@@ -57,7 +64,7 @@
         <div class="row">
           <div class="form-group">
             <label for="email" class="col-md-3 control-label">Email</label>
-            <div class="col-md-6">
+            <div class="col-md-9">
               <input id="email" class="form-control" type="email" name="email" placeholder="jdoe@email.com">
             </div>
           </div>
@@ -74,7 +81,7 @@
               <option value="work">Work</option>
             </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-7">
               <input id="primaryPhone" class="form-control" type="tel" name="primaryPhone" placeholder="(555) 123-4567">
             </div>
           </div>
@@ -91,22 +98,22 @@
               <option value="work">Work</option>
             </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-7">
               <input id="secondaryPhone" class="form-control" type="tel" name="secondaryPhone" placeholder="(555) 123-4567">
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-3 col-md-offset-6">
-            <input id="btnNext" class="btn btn-primary btn-lg btn-block" type="button" value="Next">
+          <div class="col-xs-6 col-xs-offset-6">
+            <input class="btn btn-primary btn-lg btn-block next" type="button" value="Next">
           </div>
         </div>
       </section>
 
       <section id="household">
         <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-12">
             <h2>Household Members</h2>
             <p>
               Please list current members of the household at the listed address and not members of immediate family who live elsewhere.
@@ -116,7 +123,7 @@
 
         <div class="row">
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12">
               <input class="form-control" id="member1" type="text" name="name" placeholder="Jane Doe">
               <label>
                 <input id="member1isChild" type="checkbox">
@@ -128,7 +135,7 @@
 
         <div class="row">
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12">
               <input class="form-control" id="member2" type="text" name="name" placeholder="Jimmy Doe">
               <label>
                 <input id="member1isChild" type="checkbox">
@@ -140,7 +147,7 @@
 
         <div class="row">
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12">
               <input class="form-control" id="member3" type="text" name="name" placeholder="Jennifer Doe">
               <label>
                 <input id="member1isChild" type="checkbox">
@@ -152,7 +159,7 @@
 
         <div class="row">
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12">
               <input class="form-control" id="member4" type="text" name="name" placeholder="Janice Doe">
               <label>
                 <input id="member1isChild" type="checkbox">
@@ -164,7 +171,7 @@
 
         <div class="row">
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12">
               <input class="form-control" id="member5" type="text" name="name" placeholder="Jordan Doe">
               <label>
                 <input id="member1isChild" type="checkbox">
@@ -175,11 +182,50 @@
         </div>
 
         <div class="row">
-          <div class="col-md-3 col-md-offset-3">
-            <input id="btnPrev" class="btn btn-danger btn-lg btn-block" type="button" value="Back">
+          <div class="col-xs-6">
+            <input class="btn btn-lg btn-block prev" type="button" value="Back">
           </div>
-          <div class="col-md-3">
-            <input id="btnSubmit" class="btn btn-primary btn-lg btn-block" type="submit" value="Finished">
+          <div class="col-xs-6">
+            <input class="btn btn-primary btn-lg btn-block next" type="button" value="Next">
+          </div>
+        </div>
+      </section>
+
+      <section id="confirmation">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Summary</h2>
+            <dl class="dl-horizontal">
+              <dt>Name</dt>
+              <dd><label id="sumName"></label></dd>
+
+              <dt>Address</dt>
+              <dd><label id="sumAddress"></label></dd>
+
+              <dt>Email</dt>
+              <dd><label id="sumEmail"></label></dd>
+
+              <dt>Primary Phone</dt>
+              <dd><label id="sumPrimaryPhone"></label></dd>
+
+              <dt>Secondary Phone</dt>
+              <dd><label id="sumSecondaryPhone"></label></dd>
+
+              <dt>Household</dt>
+              <dd>
+                <ul id="sumHousehold" class="list-unstyled"></ul>
+              </dd>
+            </dl>
+          </div>
+          <p>Is this correct?</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="btn btn-lg btn-block prev" type="button" value="Back">
+          </div>
+          <div class="col-xs-6">
+            <input class="btn btn-success btn-lg btn-block next" type="button" value="Submit">
           </div>
         </div>
       </section>
@@ -196,7 +242,7 @@
       </section>
 
     </form>
-
+    </div>
   </div>
 </body>
 
