@@ -28,5 +28,11 @@ FormManager.prototype.prev = function prev(fn) {
 let form;
 $(document).ready(function () {
   form = new FormManager();
+  // capture enter key
+  $(document).keypress(function(e) {
+    if (e.which === 13) {
+      form.next();
+    }
+  })
 });
 
