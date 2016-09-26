@@ -5,40 +5,21 @@ const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
 const householdSchema = mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
   },
-  lastName: {
+  address: {
     type: String,
     required: true,
   },
-  address1: {
-    type: String,
-    required: true,
-  },
-  address2: String,
-  city: {
-    type: String,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
-  postal: {
-    type: String,
-    required: true,
-  },
-  preferredContact: String,
   email: String,
   phone: [{
     type: String,
     number: String,
   }],
-  members: [{
-    firstName: String,
-    lastName: String,
+  household: [{
+    name: String,
     isChild: Boolean,
   }],
 });
