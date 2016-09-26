@@ -110,5 +110,7 @@ $(document).ready(function () {
       $(this).hide();
     }
   });
+
+  new google.maps.places.Autocomplete(document.getElementById('address'));
 });
 
