@@ -118,6 +118,14 @@ $(document).ready(function () {
     form.prev();
   });
 
+  $('#name').blur(function() {
+    form.validate('#name');
+  });
+
+  $('#address').blur(function() {
+    form.validate('#address');
+  });
+
   $('#add-member').click(function() {
     form.addMember();
     if (form.memberContainer.children().length >= 20) {
