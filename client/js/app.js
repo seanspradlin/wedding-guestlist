@@ -12,6 +12,17 @@ function FormManager() {
   this.addMember();
 }
 
+FormManager.prototype.validate = function validate(selector) {
+  var element = $(selector);
+  if (!element.val()) {
+    element.closest('.form-group').addClass('has-error');
+    return false;
+  } else {
+    element.closest('.form-group').removeClass('has-error');
+    return true;
+  }
+};
+
 FormManager.prototype.addMember = function addMember() {
   if (this.memberContainer.children().length < 21) {
     this.memberContainer.append(this.memberTemplate);
@@ -68,12 +79,15 @@ FormManager.prototype.loadSummary = function loadSummary() {
 }
 
 FormManager.prototype.next = function next(fn) {
-  if (!!this.currentSection.next()[0]) {
-    this.currentSection.fadeOut(400, () => {
-      this.currentSection = this.currentSection.next();
-      this.currentSection.fadeIn(400, fn || (() => { }));
-      this.loadSummary();
-    });
+  var isValid = this.validate('#name') && this.validate('#address');
+  if (isValid) {
+    if (!!this.currentSection.next()[0]) {
+      this.currentSection.fadeOut(400, () => {
+        this.currentSection = this.currentSection.next();
+        this.currentSection.fadeIn(400, fn || (() => { }));
+        this.loadSummary();
+      });
+    }
   }
 };
 
