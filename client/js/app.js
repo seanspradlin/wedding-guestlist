@@ -82,6 +82,14 @@ FormManager.prototype.next = function next(fn) {
   var isValid = this.validate('#name') && this.validate('#address');
   if (isValid) {
     if (!!this.currentSection.next()[0]) {
+      if (this.currentSection.attr('id') === 'confirmation') {
+        $.ajax({
+          method: 'POST',
+          url: 'api/household',
+          data: this.values()
+        });
+      }
+
       this.currentSection.fadeOut(400, () => {
         this.currentSection = this.currentSection.next();
         this.currentSection.fadeIn(400, fn || (() => { }));
