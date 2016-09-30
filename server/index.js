@@ -12,8 +12,8 @@ const app = express();
 
 mongoose.connect(config.db.url);
 
-app.use(helmet);
 app.use(express.static(path.resolve('client')));
+app.use(helmet);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', routes);
