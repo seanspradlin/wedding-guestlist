@@ -1,10 +1,8 @@
 'use strict';
 const mongoose = require('mongoose');
-const Promise = require('bluebird');
+const Schema = mongoose.Schema;
 
-mongoose.Promise = Promise;
-
-const householdSchema = mongoose.Schema({
+const householdSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -14,14 +12,8 @@ const householdSchema = mongoose.Schema({
     required: true,
   },
   email: String,
-  phone: [{
-    type: String,
-    number: String,
-  }],
-  household: [{
-    name: String,
-    isChild: Boolean,
-  }],
+  phone: Array,
+  household: Array,
 });
 
 module.exports.Household = mongoose.model('Household', householdSchema);
