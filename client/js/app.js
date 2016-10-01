@@ -84,9 +84,10 @@ FormManager.prototype.next = function next(fn) {
     if (!!this.currentSection.next()[0]) {
       if (this.currentSection.attr('id') === 'confirmation') {
         $.ajax({
-          method: 'POST',
-          url: 'api/household',
-          data: this.values()
+          type: 'POST',
+          url: 'household',
+          data: this.values(),
+          dataType: 'json'
         });
       }
 
