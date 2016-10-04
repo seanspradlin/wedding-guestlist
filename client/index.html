@@ -1,216 +1,165 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Address Book for Sean and Kate's Wedding</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body {
-      font-size: 15px;
-    }
-  </style>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/app.js"></script>
-  <script id="member-template" type="text/x-custom-template">
-    <div class="row">
-      <div class="form-group">
-        <div class="col-md-9">
-          <input class="form-control" type="text" name="name" placeholder="Jane Doe">
+  <head>
+    <title>Address Book for Sean and Kate's Wedding</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      body {
+        font-size: 15px;
+      }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script id="member-template" type="text/x-custom-template">
+      <div class="row">
+        <div class="form-group">
+          <label class="col-md-3 control-label">
+            Under 13?
+            <input type="checkbox">
+          </label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" name="name" placeholder="Jane Doe">
+          </div>
         </div>
-        <label class="col-md-3">
-          <input type="checkbox">
-          Under 13?
-        </label>
       </div>
-    </div>
-  </script>
-</head>
+    </script>
+  </head>
 
-<body>
-  <div class="container">
-    <div class="col-md-10 col-md-offset-1 col-sm-12">
+  <body>
+    <div class="container">
+      <div class="col-md-10 col-md-offset-1 col-sm-12">
 
-    <div class="row">
-      <div class="col-md-12">
-        <h1>
-          Sean &amp; Kate's<br>
-          <small>Wedding Address Book</small>
-        </h1>
-        <p>
-          We need to build a list of everyone's addresses to send out save-the-date's, RSVP's, thank-you cards, etc. We would appreciate
-          if you could take a few minutes to fill out some information about your household to make planning a little easier.
-        </p>
-        <p>
-          Thanks for your time and we hope you and your family can join us at the ceremony.
-        </p>
-      </div>
-    </div>
-
-    <form id="householdForm" class="form-horizontal">
-      <section id="contactInfo">
-        <div class="row">
-          <h2 class="col-md-12">Contact Info</h2>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <label for="name" class="col-md-3 control-label">Name</label>
-            <div class="col-md-9">
-              <input class="form-control" id="name" type="text" name="name" placeholder="John Doe" required>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <label for="address" class="col-md-3 control-label">Address</label>
-            <div class="col-md-9">
-              <input id="address" class="form-control" type="text" name="address" placeholder="123 Example Street, Nashville, TN 37013"
-                required>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <label for="email" class="col-md-3 control-label">Email</label>
-            <div class="col-md-9">
-              <input id="email" class="form-control" type="email" name="email" placeholder="jdoe@email.com">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <label for="primaryPhone" class="col-md-3 control-label">Primary Phone</label>
-            <div class="col-md-2">
-              <select id="primaryPhoneType" class="form-control" name="primaryPhoneType">
-              <option value="">-- Type --</option>
-              <option value="cell">Cell</option>
-              <option value="home">Home</option>
-              <option value="work">Work</option>
-            </select>
-            </div>
-            <div class="col-md-7">
-              <input id="primaryPhone" class="form-control" type="tel" name="primaryPhone" placeholder="(555) 123-4567">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <label for="secondaryPhone" class="col-md-3 control-label">Secondary Phone</label>
-            <div class="col-md-2">
-              <select id="secondaryPhoneType" class="form-control" name="secondaryPhoneType">
-              <option value="">-- Type --</option>
-              <option value="cell">Cell</option>
-              <option value="home">Home</option>
-              <option value="work">Work</option>
-            </select>
-            </div>
-            <div class="col-md-7">
-              <input id="secondaryPhone" class="form-control" type="tel" name="secondaryPhone" placeholder="(555) 123-4567">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-6 col-xs-offset-6">
-            <button class="btn btn-primary btn-lg btn-block next" type="button">Next</button>
-          </div>
-        </div>
-      </section>
-
-      <section id="household">
         <div class="row">
           <div class="col-md-12">
-            <h2>Household Members</h2>
+            <h1>
+              Sean &amp; Kate's<br>
+              <small>Wedding Address Book</small>
+            </h1>
             <p>
-              Please list current members of the household at the listed address and not members of immediate family who live elsewhere.
+              We need to build a list of everyone's addresses to send out save-the-date's, RSVP's, thank-you cards, etc. We would appreciate
+              if you could take a few minutes to fill out some information about your household to make planning a little easier.
+            </p>
+            <p>
+              Thanks for your time and we hope you and your family can join us at the ceremony.
             </p>
           </div>
         </div>
 
-        <div id="member-container"></div>
+        <form id="form" class="form-horizontal">
+          <div class="row">
+            <h2 class="col-md-12">Contact Info</h2>
+          </div>
 
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="button" class="btn btn-primary btn-lg" id="add-member">
-              <span class="glyphicon glyphicon-plus"></span>
-              Add another...
+          <div class="row">
+            <div class="form-group">
+              <label for="name" class="col-md-3 control-label">Name</label>
+              <div class="col-md-9">
+                <input class="form-control" id="name" type="text" name="name" placeholder="John Doe">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="address" class="col-md-3 control-label">Address</label>
+              <div class="col-md-9">
+                <input id="address" class="form-control" type="text" name="address" placeholder="123 Example Street, Nashville, TN 37013">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="email" class="col-md-3 control-label">Email</label>
+              <div class="col-md-9">
+                <input id="email" class="form-control" type="email" name="email" placeholder="jdoe@email.com">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="primaryPhone" class="col-md-3 control-label">Primary Phone</label>
+              <div class="col-md-2">
+                <select id="primaryPhoneType" class="form-control" name="primaryPhoneType">
+                  <option value="">-- Type --</option>
+                  <option value="cell">Cell</option>
+                  <option value="home">Home</option>
+                  <option value="work">Work</option>
+                </select>
+              </div>
+              <div class="col-md-7">
+                <input id="primaryPhone" class="form-control" type="tel" name="primaryPhone" placeholder="(555) 123-4567">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="secondaryPhone" class="col-md-3 control-label">Secondary Phone</label>
+              <div class="col-md-2">
+                <select id="secondaryPhoneType" class="form-control" name="secondaryPhoneType">
+                  <option value="">-- Type --</option>
+                  <option value="cell">Cell</option>
+                  <option value="home">Home</option>
+                  <option value="work">Work</option>
+                </select>
+              </div>
+              <div class="col-md-7">
+                <input id="secondaryPhone" class="form-control" type="tel" name="secondaryPhone" placeholder="(555) 123-4567">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Household Members</h2>
+              <p>
+                Please list current members of the household at the listed address and not members of immediate family who live elsewhere.
+              </p>
+            </div>
+          </div>
+
+          <div id="member-container"></div>
+
+          <div class="row">
+            <div class="col-md-9 col-md-offset-3">
+              <button type="button" class="btn btn-primary btn-lg" id="add-member">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add another...
               </button>
+            </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-xs-6">
-            <button class="btn btn-block prev" type="button">Back</button>
+          <div class="row">
+            <div class="col-md-9 col-md-offset-3">
+              <button class="btn btn-primary btn-lg" type="submit">
+                <span class="glyphicon glyphicon-ok"></span>
+                Submit
+              </button>
+            </div>
           </div>
-          <div class="col-xs-6">
-            <button class="btn btn-primary btn-block next" type="button">Next</button>
+        </form>
+
+        <section id="thanks" class="hide">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Thanks</h2>
+              <p>
+                We'll be sending out more information about the ceremony soon.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section id="confirmation">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Summary</h2>
-            <dl class="dl-horizontal">
-              <dt>Name</dt>
-              <dd><span id="sumName"></span></dd>
-
-              <dt>Address</dt>
-              <dd><span id="sumAddress"></span></dd>
-
-              <dt>Email</dt>
-              <dd><span id="sumEmail"></span></dd>
-
-              <dt>Primary Phone</dt>
-              <dd><span id="sumPrimaryPhone"></span></dd>
-
-              <dt>Secondary Phone</dt>
-              <dd><span id="sumSecondaryPhone"></span></dd>
-
-              <dt>Household</dt>
-              <dd>
-                <ul id="sumHousehold" class="list-unstyled"></ul>
-              </dd>
-            </dl>
-          </div>
-          <p>Is this correct?</p>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-6">
-            <button class="btn btn-lg btn-block prev" type="button">Back</button>
-          </div>
-          <div class="col-xs-6">
-            <button class="btn btn-success btn-lg btn-block next" type="button">Submit</button>
-          </div>
-        </div>
-      </section>
-
-      <section id="thanks">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Thanks</h2>
-            <p>
-              We'll be sending out more information about the ceremony soon.
-            </p>
-          </div>
-        </div>
-      </section>
-
-    </form>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<ADD_KEY_HERE>&libraries=places"></script>
-</body>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=ADD_KEY_HERE&libraries=places"></script>
+  </body>
 
 </html>

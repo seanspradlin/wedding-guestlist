@@ -3,13 +3,24 @@
 'use strict';
 
 function FormManager() {
-  this.currentSection = $('#householdForm section:first');
-  this.currentSection.show();
   this.memberTemplate = $('#member-template').html();
   this.memberContainer = $('#member-container');
   this.addMember();
   this.addMember();
   this.addMember();
+}
+
+FormManager.prototype.submit = function submit(fn) {
+  fn = fn || function() {};
+  if (this.validate('#name') && this.validate('#address')) {
+    $.ajax({
+      type: 'POST',
+      url: 'household',
+      data: this.values(),
+      dataType: 'json',
+      complete: fn
+    });
+  }
 }
 
 FormManager.prototype.validate = function validate(selector) {
@@ -78,54 +89,8 @@ FormManager.prototype.loadSummary = function loadSummary() {
 
 }
 
-FormManager.prototype.next = function next(fn) {
-  var isValid = this.validate('#name') && this.validate('#address');
-  if (isValid) {
-    if (!!this.currentSection.next()[0]) {
-      if (this.currentSection.attr('id') === 'confirmation') {
-        $.ajax({
-          type: 'POST',
-          url: 'household',
-          data: this.values(),
-          dataType: 'json'
-        });
-      }
-
-      this.currentSection.fadeOut(400, () => {
-        this.currentSection = this.currentSection.next();
-        this.currentSection.fadeIn(400, fn || (() => { }));
-        this.loadSummary();
-      });
-    }
-  }
-};
-
-FormManager.prototype.prev = function prev(fn) {
-  if (!!this.currentSection.prev()[0]) {
-    this.currentSection.fadeOut(400, () => {
-      this.currentSection = this.currentSection.prev();
-      this.currentSection.fadeIn(400, fn || (() => { }));
-    })
-  }
-};
-
-var form;
 $(document).ready(function () {
-  form = new FormManager();
-  // capture enter key
-  $(document).keypress(function(e) {
-    if (e.which === 13) {
-      form.next();
-    }
-  });
-
-  $('.next').click(function() {
-    form.next();
-  });
-
-  $('.prev').click(function() {
-    form.prev();
-  });
+  var form = new FormManager();
 
   $('#name').blur(function() {
     form.validate('#name');
@@ -140,6 +105,15 @@ $(document).ready(function () {
     if (form.memberContainer.children().length >= 20) {
       $(this).hide();
     }
+  });
+
+  $('#form').submit(function(e) {
+    e.preventDefault();
+    form.submit(function() {
+      $('#form').fadeOut(400, function() {
+        $('#thanks').removeClass('hide');
+      });
+    });
   });
 
   new google.maps.places.Autocomplete(document.getElementById('address'));
